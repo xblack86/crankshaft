@@ -78,8 +78,8 @@ sed -i 's/user nobody/user pi/' /lib/systemd/system/triggerhappy.service
 ln -s /boot/crankshaft/triggerhappy.conf /etc/triggerhappy/triggers.d/crankshaft.conf
 
 # set the hostname
-echo "CRANKSHAFT-NG" > /etc/hostname
-sed -i "s/raspberrypi/CRANKSHAFT-NG/" /etc/hosts
+echo "CRANKSHAFT-CONDOR" > /etc/hostname
+sed -i "s/raspberrypi/CRANKSHAFT-CONDOR/" /etc/hosts
 
 # Boost system performance
 sed -i 's/reboot.target/shutdown.target/g' /lib/systemd/system/rpi-display-backlight.service
@@ -277,17 +277,10 @@ ln -s /usr/local/bin/crankshaft /usr/local/bin/csmt
 # Set path for rsyslogd
 sed -i 's/\$WorkDirectory \/var\/spool\/rsyslog/\$WorkDirectory \/var\/spool/' /etc/rsyslog.conf
 
-# Download source for exfat-nofuse and kernel
-cd /usr/src/
-git clone https://github.com/dorimanx/exfat-nofuse
-cd exfat-nofuse
-git remote add barrybingo https://github.com/barrybingo/exfat-nofuse
-git fetch --all
-git merge barrybingo/master
-cd ..
-version=`cat ./exfat-nofuse/dkms.conf | grep PACKAGE_VERSION | cut -d= -f2 | sed "s/\"//g"`
-mv exfat-nofuse exfat-$version
 
-dkms add -m exfat -v $version
+ln -s /usr/local/lib/libaasdk.so /lib/arm-linux-gnueabihf/libaasdk.so.2
+ln -s /usr/local/lib/libaasdk_proto.so /lib/arm-linux-gnueabihf/libaasdk_proto.so.2
+ln -s /usr/local/lib/libaasdk.so /lib/arm-linux-gnueabihf/libaasdk.so
+ln -s /usr/local/lib/libaasdk_proto.so /lib/arm-linux-gnueabihf/libaasdk_proto.so
 
 exit 0

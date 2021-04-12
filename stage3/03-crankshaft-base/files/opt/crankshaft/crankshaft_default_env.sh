@@ -3,7 +3,7 @@
 
 # Global Flag (enables / disables gpio usage excluding device connected
 # trigger gpio and ignition based shutdown!)
-ENABLE_GPIO=1
+ENABLE_GPIO=0
 
 # Possible used gpio's by hifiberry dac's depending on model:
 # For more info visit the hifiberry homepage! To prevent from bugs don't use them!
@@ -50,7 +50,7 @@ DEBUG_MODE=0
 ### OpenAuto ###
 # Start OpenAuto in X11 or EGL
 # By default, EGL, but if you can't get it to work, do X11
-START_X11=0
+START_X11=1
 
 ### Screen ###
 # Brightness related stuff
@@ -58,11 +58,11 @@ START_X11=0
 BRIGHTNESS_FILE=/sys/class/backlight/rpi_backlight/brightness
 
 # brightness values
-BR_MIN=30
+BR_MIN=90
 BR_MAX=255
 BR_STEP=25
 BR_DAY=255
-BR_NIGHT=30
+BR_NIGHT=90
 
 # Custom brightness control
 # Note: this command is called after every brightness change - can slow down for example the brightness
@@ -73,7 +73,7 @@ BR_NIGHT=30
 # otherwise it will not be transfered during updates!
 #
 # To disable leave empty
-CUSTOM_BRIGHTNESS_COMMAND=
+CUSTOM_BRIGHTNESS_COMMAND=/opt/condor/brightness
 
 # Flip the screen 180°
 FLIP_SCREEN=0
@@ -102,19 +102,19 @@ DISCONNECTION_POWEROFF_DISABLE=0
 
 ### Wifi Setup ###
 # Your country code like EN,DE,FR,UK etc.
-WIFI_COUNTRY=EN
+WIFI_COUNTRY=UK
 
 # Wifi client mode (use this entry for home/work wifi - not for phone's hotspot)
 # If your SSID or password contains special chars or spaces make sure using quotation marks ="SSID" / ="password"
-WIFI_SSID="sample"
-WIFI_PSK="sample"
+WIFI_SSID="EMAVAP"
+WIFI_PSK="h5d71gy7"
 # Optinal 2nd config to access to phone's hotspot
 # Note: if second config is configured system will use first connectable wifi during boot
-WIFI2_SSID="sample"
-WIFI2_PSK="sample"
+WIFI2_SSID="EMAVAP-workshop"
+WIFI2_PSK="h5d71gy7"
 
 # Force recreate wpa_supplicant.conf during boot after wifi credentials have changed by user (default 0 | update 1)
-WIFI_UPDATE_CONFIG=1
+WIFI_UPDATE_CONFIG=0
 
 # Hotspot (if enabled the wifi client is disabled and a hotspot is opened)
 # Hotspot has now a default password (1234567890) -> changeable in /etc/hostapd/hostapd.conf if really needed!
@@ -187,7 +187,7 @@ EXTERNAL_BLUETOOTH=0
 ALLOW_USB_FLASH=1
 
 # LightSensor
-LIGHTSENSOR_TYPE='TSL2561' # Allowed Values TSL2561 TSL2591
+LIGHTSENSOR_TYPE='none' # Allowed Values TSL2561 TSL2591
 # the address of TSL2561/TSL2591 can be
 # 0x29, 0x39 or 0x49
 TSL_I2C_BUS=1
@@ -205,7 +205,7 @@ LUX_LEVEL_3=100
 LUX_LEVEL_4=200
 LUX_LEVEL_5=500
 # Set this display brightness by switch levels
-DISP_BRIGHTNESS_1=30
+DISP_BRIGHTNESS_1=50
 DISP_BRIGHTNESS_2=90
 DISP_BRIGHTNESS_3=150
 DISP_BRIGHTNESS_4=210

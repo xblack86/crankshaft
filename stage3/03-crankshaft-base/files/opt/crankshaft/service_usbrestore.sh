@@ -26,17 +26,6 @@ if [ ! -f /etc/dkms_done ]; then
     echo "[${CYAN}${BOLD} INFO ${RESET}] *******************************************************" > /dev/tty3
     mount -o remount,rw /
     dkms autoinstall
-    if [ "$(dkms status | grep exfat | cut -d: -f2 | sed 's/ //g')" == "installed" ]; then
-        sed -i 's/exfat//g' /etc/modules
-        sed -i '/./,/^$/!d' /etc/modules
-        echo "exfat" >> /etc/modules
-        sed -i 's/exfat//g' /etc/initramfs-tools/modules
-        sed -i '/./,/^$/!d' /etc/initramfs-tools/modules
-        echo "exfat" >> /etc/initramfs-tools/modules
-        echo "[${CYAN}${BOLD} INFO ${RESET}] *******************************************************" > /dev/tty3
-        echo "[${CYAN}${BOLD} INFO ${RESET}] Module exfat successfully installed" > /dev/tty3
-        echo "[${CYAN}${BOLD} INFO ${RESET}] *******************************************************" > /dev/tty3
-    fi
     touch /etc/dkms_done
     sync
     reboot
@@ -50,8 +39,10 @@ if [ ! -f /etc/cs_backup_restore_done ]; then
         # give udev time to finish mounts
         sleep 10
     fi
-    show_screen
-    show_cursor
+    if [ "$(ls -A /media/USBDRIVES)" ]; then
+        show_screen
+        show_cursor
+    fi
     echo "${RESET}" > /dev/tty3
     echo "[${CYAN}${BOLD} INFO ${RESET}] *******************************************************" > /dev/tty3
     echo "[${CYAN}${BOLD} INFO ${RESET}] Checking for cs backups to restore..." > /dev/tty3
