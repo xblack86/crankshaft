@@ -9,6 +9,7 @@ install -m 755 files/usr/bin/gpio-watch                                      "${
 install -d "${ROOTFS_DIR}/opt/condor"
 install -m 755 files/opt/condor/gpio-watch-start.sh                          "${ROOTFS_DIR}/opt/condor/gpio-watch-start.sh"
 install -m 755 files/opt/condor/brightness                                   "${ROOTFS_DIR}/opt/condor/brightness"
+install -m 755 files/opt/condor/condor.mp4                                   "${ROOTFS_DIR}/opt/condor/condor.mp4"
 
 # /opt/condor/gpio-watch-dir
 install -d "${ROOTFS_DIR}/opt/condor/gpio-watch-dir"
@@ -22,4 +23,5 @@ install -m 755 files/etc/rc.local                                            "${
 # /etc
 install -d "${ROOTFS_DIR}/etc/systemd/system/"
 install -m 644 files/etc/systemd/system/pigpiod.service                       "${ROOTFS_DIR}/etc/systemd/system/pigpiod.service"
+install -m 644 files/etc/systemd/system/splash.service                       "${ROOTFS_DIR}/etc/systemd/system/splash.service"
 

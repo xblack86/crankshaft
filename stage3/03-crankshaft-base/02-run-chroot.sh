@@ -184,7 +184,7 @@ sed -i 's/console=tty1/console=tty3/' /boot/cmdline.txt
 sed -i 's/console=serial0,115200 //' /boot/cmdline.txt
 
 # add special settings
-sed -i 's/$/ logo.nologo loglevel=0 vt.global_cursor_default=0 noswap splash plymouth.ignore-serial-consoles consoleblank=0 ipv6.disable=1/' /boot/cmdline.txt
+sed -i 's/$/ logo.nologo loglevel=0 plymouth.enable=0 vt.global_cursor_default=0 noswap splash plymouth.ignore-serial-consoles consoleblank=0 ipv6.disable=1/' /boot/cmdline.txt
 
 # Banner for ssh
 sed -i 's/#Banner none/Banner \/etc\/issue.net/' /etc/ssh/sshd_config
@@ -193,7 +193,7 @@ sed -i 's/#Banner none/Banner \/etc\/issue.net/' /etc/ssh/sshd_config
 sed -i 's/^#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/' /etc/ssh/sshd_config
 
 # OS Name
-STRING="Welcome to Crankshaft CarOS (${IMG_DATE} / Build ${GIT_HASH})"
+STRING="Welcome to Crankshaft-CONDOR CarOS (${IMG_DATE} / Build ${GIT_HASH})"
 #sed -i "s/PRETTY_NAME=.*/PRETTY_NAME=${STRING}/g" /usr/lib/os-release
 cp /usr/lib/os-release /usr/lib/os-release.bak
 sed -i '/PRETTY_NAME=/d' /usr/lib/os-release.bak

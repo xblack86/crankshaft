@@ -6,6 +6,7 @@ fi
 
 # Set default startup services state
 systemctl enable pigpiod.service
+systemctl enable splash.service
 
 echo "DefaultTimeoutStopSec=10s" | tee -a /etc/systemd/user.conf
 echo "DefaultTimeoutAbortSec=10s" | tee -a /etc/systemd/user.conf

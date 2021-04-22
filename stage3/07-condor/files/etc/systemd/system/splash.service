@@ -1,0 +1,12 @@
+[Unit]
+Description=Splash screen
+DefaultDependencies=no
+After=local-fs.target
+
+[Service]
+ExecStart=omxplayer --aspect-mode stretch -b /opt/condor/condor.mp4
+StandardInput=tty
+StandardOutput=tty
+
+[Install]
+WantedBy=sysinit.target
