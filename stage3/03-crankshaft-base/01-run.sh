@@ -66,7 +66,6 @@ install -d "${ROOTFS_DIR}/etc/initramfs-tools/conf.d"
 install -d "${ROOTFS_DIR}/etc/initramfs-tools/hooks"
 install -d "${ROOTFS_DIR}/etc/initramfs-tools/scripts/local-top"
 install -m 644 files/etc/initramfs-tools/conf.d/local.conf              "${ROOTFS_DIR}/etc/initramfs-tools/conf.d/"
-install -m 755 files/etc/initramfs-tools/hooks/pv                       "${ROOTFS_DIR}/etc/initramfs-tools/hooks/"
 install -m 755 files/etc/initramfs-tools/scripts/local-top/local.sh     "${ROOTFS_DIR}/etc/initramfs-tools/scripts/local-top/"
 
 install -d "${ROOTFS_DIR}/etc/hostapd/"
