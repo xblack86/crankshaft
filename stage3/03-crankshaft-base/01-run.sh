@@ -63,18 +63,12 @@ install -m 644 files/etc/motd                                           "${ROOTF
 install -m 644 files/etc/rsyslog.d/disable-logspam.conf                 "${ROOTFS_DIR}/etc/rsyslog.d/"
 
 install -d "${ROOTFS_DIR}/etc/initramfs-tools/conf.d"
-install -d "${ROOTFS_DIR}/etc/initramfs-tools/hooks"
-install -d "${ROOTFS_DIR}/etc/initramfs-tools/scripts/local-top"
 install -m 644 files/etc/initramfs-tools/conf.d/local.conf              "${ROOTFS_DIR}/etc/initramfs-tools/conf.d/"
-install -m 755 files/etc/initramfs-tools/scripts/local-top/local.sh     "${ROOTFS_DIR}/etc/initramfs-tools/scripts/local-top/"
 
 install -d "${ROOTFS_DIR}/etc/hostapd/"
 install -m 644 files/etc/default/hostapd                                "${ROOTFS_DIR}/etc/default/"
 install -m 644 files/etc/hostapd/hostapd.conf                           "${ROOTFS_DIR}/etc/hostapd/"
 install -m 644 files/etc/dnsmasq.conf                                   "${ROOTFS_DIR}/etc/"
-
-install -d "${ROOTFS_DIR}/etc/samba"
-install -m 644 files/etc/samba/smb.conf                                 "${ROOTFS_DIR}/etc/samba/"
 
 # /opt
 install -d "${ROOTFS_DIR}/opt/crankshaft"
