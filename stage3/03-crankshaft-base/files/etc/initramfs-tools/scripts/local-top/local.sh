@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 
 GRAY="\e[38;5;244m"
 BLUE="\e[38;5;21m"
@@ -9,7 +9,7 @@ YELLOW="\e[38;5;214m"
 
 printf "${GRAY}" >/dev/tty3
 printf "[ ${BLUE}INFO${GRAY} ] *******************************************************\n" >/dev/tty3
-printf "[ ${BLUE}INFO${GRAY} ] Crankshaft Flash & Backup System\n" >/dev/tty3
+printf "[ ${BLUE}INFO${GRAY} ] Crankshaft Flash\n" >/dev/tty3
 printf "[ ${BLUE}INFO${GRAY} ] *******************************************************\n" >/dev/tty3
 printf "\n" >/dev/tty3
 
@@ -44,7 +44,7 @@ for FSMOUNTPOINT in $(ls -d /media/USBDRIVES/* 2>/dev/null); do
     FSTYPE=$(blkid ${DEVICE} | sed 's/.*TYPE="//' | cut -d'"' -f1)
 
     if [ -d /media/USBDRIVES/${PARTITION} ]; then
-        UPDATEFILE=$(ls -Art /media/USBDRIVES/${PARTITION} | grep 'condor' | grep .img | grep -v md5 | grep -v ^._ | tail -1)
+        UPDATEFILE=$(ls -Art /media/USBDRIVES/${PARTITION} | grep 'condor' | grep .img | grep -v ^._ | tail -1)
         if [ ! -z ${UPDATEFILE} ]; then
             printf "[ ${CYAN}INFO${GRAY} ] *******************************************************\n" >/dev/tty3
             printf "[ ${CYAN}INFO${GRAY} ] Detected  Drive: ${DEVICE}\n" > /dev/tty3
@@ -170,7 +170,7 @@ for FSMOUNTPOINT in $(ls -d /media/USBDRIVES/* 2>/dev/null); do
             SIZE=$(($(stat -c%s /media/USBDRIVES/${PARTITION}/${UPDATEFILE})/1024/1024))
 
             # risky part
-            dd if=/media/USBDRIVES/${PARTITION}/${UPDATEFILE} bs=1M | /usr/bin/pv -s ${SIZE}M | dd of=/dev/mmcblk0
+            dd if=/media/USBDRIVES/${PARTITION}/${UPDATEFILE} bs=1M of=/dev/mmcblk0
 
             if [ $? -ne 0 ]; then
                 clear  >/dev/tty3
